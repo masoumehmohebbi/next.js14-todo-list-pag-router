@@ -9,4 +9,7 @@
   .selectOpt {
     @apply border border-pink-400 rounded-lg bg-transparent px-2 py-1 focus:outline-none;
   }
+  .errorAlert {
+    @apply my-4 mx-auto w-11/12 max-w-[40rem] bg-pink-200 text-center rounded-md px-2 py-3;
+  }
 }

@@ -11,7 +11,11 @@ const EventDetail = () => {
   const event = getEventById(params.eventId);
 
   if (!event) {
-    return <p>No event found!</p>;
+    return (
+      <div className="errorAlert">
+        <p>No event found!</p>
+      </div>
+    );
   }
   return (
     <>
