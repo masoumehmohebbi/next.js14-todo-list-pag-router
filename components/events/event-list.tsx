@@ -3,7 +3,7 @@ import EventItem from "./event-item";
 
 const EventList = ({ items }) => {
   return (
-    <ul>
+    <ul className="grid grid-cols-1 w-full justify-items-center ">
       {items.map((item) => (
         <EventItem
           key={item.id}

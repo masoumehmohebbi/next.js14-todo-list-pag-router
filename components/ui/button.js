@@ -1,9 +1,16 @@
 import Link from "next/link";
 
-export default function Button({ link, children }) {
+export default function Button({ link, children, onClick }) {
+  if (link) {
+    return (
+      <Link href={link}>
+        <span className="btn">{children}</span>
+      </Link>
+    );
+  }
   return (
-    <Link href={link}>
-      <span className="bg-blue-300">{children}</span>
-    </Link>
+    <button className="btn" onClick={onClick}>
+      {children}
+    </button>
   );
 }
