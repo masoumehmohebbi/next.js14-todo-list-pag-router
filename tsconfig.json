@@ -19,6 +19,8 @@
       "@/containers/*": ["src/containers/*"],
       "@/server/*": ["src/server/*"],
       "@/api/*": ["src/api/*"],
+      "@/styles/*": ["./styles/*"],
+      
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

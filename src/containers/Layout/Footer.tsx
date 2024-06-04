@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <div className='p-5 text-tertiary bg-accent'>ساخته شده توسط</div>
   )
 }
 
