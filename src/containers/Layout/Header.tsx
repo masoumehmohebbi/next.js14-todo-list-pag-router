@@ -1,5 +1,6 @@
 import React from "react";
 import {Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
+import { HiPaperAirplane } from "react-icons/hi";
 
 
 export default function Header() {
@@ -17,22 +18,22 @@ export default function Header() {
   ];
 
   return (
-    <Navbar disableAnimation isBordered>
+    <Navbar disableAnimation isBordered className="bg-primary-400 p-1">
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle />
       </NavbarContent>
 
       <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
-          Logo
-          <p className="font-bold text-inherit">ACME</p>
+          <HiPaperAirplane/>
+          <p className="font-bold text-inherit">برنامه ریزی</p>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarBrand>
-          Logo
-          <p className="font-bold text-inherit">ACME</p>
+        <HiPaperAirplane/>
+          <p className="font-bold text-inherit">برنامه ریزی</p>
         </NavbarBrand>
         <NavbarItem>
           <Link color="foreground" href="#">
@@ -53,11 +54,11 @@ export default function Header() {
 
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
+          <Link href="#">ورود</Link>
         </NavbarItem>
         <NavbarItem>
           <Button as={Link} color="warning" href="#" variant="flat">
-            Sign Up
+            ثبت نام
           </Button>
         </NavbarItem>
       </NavbarContent>
