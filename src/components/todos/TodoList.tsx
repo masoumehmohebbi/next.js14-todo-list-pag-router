@@ -1,7 +1,8 @@
-import { Card, CardBody, Link, Checkbox, Tooltip, Button } from '@nextui-org/react';
+import { Card, CardBody, Link, Checkbox } from '@nextui-org/react';
 import React from 'react';
 import { HiPencil, HiTrash } from 'react-icons/hi';
-import InputField from 'src/ui/InputField';
+import InputField from '@/ui/InputField';
+import Button from '@/ui/Button';
 
 const TodoList = () => {
   return (
@@ -17,60 +18,12 @@ const TodoList = () => {
           </Link>
         </Checkbox>
         <div className="flex gap-x-1">
-          <Tooltip key="secondary" color="secondary" content="حذف">
-            <Button
-              size="sm"
-              isIconOnly
-              color="danger"
-              variant="faded"
-              aria-label="Take a photo"
-            >
-              <HiTrash className="text-lg" />
-            </Button>
-          </Tooltip>
-          <Tooltip key="secondary" color="primary" content="تغییر">
-            <Button
-              size="sm"
-              isIconOnly
-              color="success"
-              variant="faded"
-              aria-label="Take a photo"
-            >
-              <HiPencil className="text-lg" />
-            </Button>
-          </Tooltip>
-        </div>
-      </CardBody>
-
-      <CardBody className="flex flex-row w-full justify-between items-center">
-        <Checkbox size="lg" defaultSelected lineThrough>
-          <Link size="lg" isBlock showAnchorIcon href="#" color="secondary">
-            <p>ورزش</p>
-          </Link>
-        </Checkbox>
-        <div className="flex gap-x-1">
-          <Tooltip key="secondary" color="secondary" content="حذف">
-            <Button
-              size="sm"
-              isIconOnly
-              color="danger"
-              variant="faded"
-              aria-label="Take a photo"
-            >
-              <HiTrash className="text-lg" />
-            </Button>
-          </Tooltip>
-          <Tooltip key="secondary" color="primary" content="تغییر">
-            <Button
-              size="sm"
-              isIconOnly
-              color="success"
-              variant="faded"
-              aria-label="Take a photo"
-            >
-              <HiPencil className="text-lg" />
-            </Button>
-          </Tooltip>
+          <Button content="حذف" color="danger" size="sm">
+            <HiTrash className="text-lg" />
+          </Button>
+          <Button content="تغییر" color="success" size="sm">
+            <HiPencil className="text-lg" />
+          </Button>
         </div>
       </CardBody>
     </Card>
