@@ -11,6 +11,7 @@ import {
   Button,
 } from '@nextui-org/react';
 import { HiPaperAirplane } from 'react-icons/hi';
+import { ThemeSwitch } from '@/ui/ThemeSwitch';
 
 export default function Header() {
   const menuItems = [
@@ -45,9 +46,7 @@ export default function Header() {
           <p className="font-bold text-inherit">برنامه ریزی</p>
         </NavbarBrand>
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
-          </Link>
+          <ThemeSwitch />
         </NavbarItem>
         <NavbarItem isActive>
           <Link href="#" aria-current="page" color="warning">
