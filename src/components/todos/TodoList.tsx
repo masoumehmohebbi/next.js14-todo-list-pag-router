@@ -8,9 +8,19 @@ import Todo from '@/components/todos/Todo';
 interface TodoListProps extends AddTodoProps {
   data: TodoType[];
   onDelete: (id: string) => void;
+  onEdit: (id: string) => void;
+  isLoading: boolean;
+  loadingId: string | null;
 }
 
-const TodoList: React.FC<TodoListProps> = ({ data, onAdd, onDelete }) => {
+const TodoList: React.FC<TodoListProps> = ({
+  data,
+  onAdd,
+  onDelete,
+  onEdit,
+  loadingId,
+  isLoading,
+}) => {
   return (
     <Card className="max-w-screen-md mx-auto my-5">
       <CardBody className="flex flex-row justify-between items-center">
@@ -18,7 +28,15 @@ const TodoList: React.FC<TodoListProps> = ({ data, onAdd, onDelete }) => {
       </CardBody>
 
       {data?.length ? (
-        data.map((todo) => <Todo key={todo._id} todo={todo} onDelete={onDelete} />)
+        data.map((todo) => (
+          <Todo
+            key={todo._id}
+            todo={todo}
+            onDelete={onDelete}
+            onEdit={onEdit}
+            isLoading={loadingId === todo._id}
+          />
+        ))
       ) : (
         <CardBody className="text-start my-2">هنوز هیچ یادداشتی اضافه نشده</CardBody>
       )}

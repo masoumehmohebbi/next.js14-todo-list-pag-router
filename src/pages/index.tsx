@@ -25,16 +25,27 @@ export interface AddTodoProps {
 
 const Home: React.FC<HomeProps> = ({ todos }) => {
   const [data, setData] = useState<TodoType[]>(todos);
+  const [isLoading, setIsLoading] = useState(false);
+  const [loadingId, setLoadingId] = useState<string | null>(null);
 
-  const deleteTodo = (id: string) => {
-    axios.delete(`/api/todos/${id}`).then(({ data }) => {
-      setData(data.todos);
-      toast.error(data.message);
-    });
+  const editTodo = (id: string) => {
+    axios.put(`/api/todos/${id}`).then();
   };
+  const deleteTodo = (id: string) => {
+    setLoadingId(id);
+    setIsLoading(true);
+    axios
+      .delete(`/api/todos/${id}`)
+      .then(({ data }) => {
+        setData(data.todos);
+        toast.error(data.message);
+        setIsLoading(false);
+      })
+      .catch((err) => console.log(err));
+  };
+
   const addTodo: AddTodoProps['onAdd'] = (e, formData) => {
     e.preventDefault();
-
     axios
       .post(`/api/todos/`, { formData })
       .then(({ data }) => {
@@ -47,7 +58,14 @@ const Home: React.FC<HomeProps> = ({ todos }) => {
     <NextUIProvider>
       <Toaster />
       <Layout>
-        <TodoList onAdd={addTodo} data={data} onDelete={deleteTodo} />
+        <TodoList
+          onAdd={addTodo}
+          data={data}
+          onDelete={deleteTodo}
+          onEdit={editTodo}
+          isLoading={isLoading}
+          loadingId={loadingId}
+        />
       </Layout>
     </NextUIProvider>
   );

@@ -7,9 +7,7 @@ import {
   ModalFooter,
   Button,
   useDisclosure,
-  Checkbox,
   Input,
-  Link,
   Textarea,
 } from '@nextui-org/react';
 import { AddTodoProps } from '../pages';

@@ -4,12 +4,12 @@ const statusOptions = [
     value: 'ALL',
   },
   {
-    label: 'باز',
-    value: 'OPEN',
+    label: 'انجام شده',
+    value: 'COMPLETED',
   },
   {
-    label: 'بسته',
-    value: 'CLOSED',
+    label: 'انجام نشده',
+    value: 'UNCOMPLETED',
   },
 ];
 import { Button, ButtonGroup } from '@nextui-org/react';
@@ -24,7 +24,7 @@ const Filter = () => {
   //     setSearchParams(searchParams);
   //   };
   return (
-    <div className="flex items-center gap-x-2 text-xs">
+    <div className="flex items-center gap-x-2">
       <span>وضعیت</span>
       <ButtonGroup>
         {statusOptions.map(({ value, label }) => {

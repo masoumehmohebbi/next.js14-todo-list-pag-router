@@ -17,3 +17,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       .json({ message: `${todoToDelete.title} با موفقیت حذف شد`, todos });
   }
 }
+
+export async function getOneTodo(query: any) {
+  const todo = await Todo.findById(query.todoId);
+  return todo;
+}
