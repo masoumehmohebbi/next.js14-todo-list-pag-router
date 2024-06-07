@@ -1,32 +1,26 @@
 import { Card, CardBody, Link, Checkbox } from '@nextui-org/react';
 import React from 'react';
-import { HiPencil, HiTrash } from 'react-icons/hi';
-import Button from '@/ui/Button';
 import Header from '@/components/todos/Header';
-import { AddTodoProps } from 'src/pages';
+import { AddTodoProps } from 'src/pages/index';
+import { TodoType } from '@/pages/index';
+import Todo from '@/components/todos/Todo';
 
-const TodoList: React.FC<AddTodoProps> = ({ onAdd }) => {
+interface TodoListProps extends AddTodoProps {
+  data: TodoType[];
+}
+
+const TodoList: React.FC<TodoListProps> = ({ data, onAdd }) => {
   return (
     <Card className="max-w-screen-md mx-auto my-5">
       <CardBody className="flex flex-row justify-between items-center">
         <Header onAdd={onAdd} />
       </CardBody>
 
-      <CardBody className="flex flex-row w-full justify-between items-center">
-        <Checkbox size="lg" defaultSelected lineThrough>
-          <Link size="lg" isBlock showAnchorIcon href="#" color="secondary">
-            <p>ورزش</p>
-          </Link>
-        </Checkbox>
-        <div className="flex gap-x-1">
-          <Button content="حذف" color="danger" size="sm">
-            <HiTrash className="text-lg" />
-          </Button>
-          <Button content="تغییر" color="success" size="sm">
-            <HiPencil className="text-lg" />
-          </Button>
-        </div>
-      </CardBody>
+      {data?.length ? (
+        data.map((todo) => <Todo key={todo._id} todo={todo} />)
+      ) : (
+        <CardBody className="text-start my-2">هنوز هیچ یادداشتی اضافه نشده</CardBody>
+      )}
     </Card>
   );
 };
