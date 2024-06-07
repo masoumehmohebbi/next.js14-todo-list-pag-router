@@ -26,9 +26,13 @@ export interface AddTodoProps {
 const Home: React.FC<HomeProps> = ({ todos }) => {
   const [data, setData] = useState<TodoType[]>(todos);
 
+  const deleteTodo = (id: string) => {
+    axios.delete(`/api/todos/${id}`).then(({ data }) => {
+      setData(data.todos);
+      toast.error(data.message);
+    });
+  };
   const addTodo: AddTodoProps['onAdd'] = (e, formData) => {
-    console.log(formData.title[0]);
-
     e.preventDefault();
 
     axios
@@ -43,7 +47,7 @@ const Home: React.FC<HomeProps> = ({ todos }) => {
     <NextUIProvider>
       <Toaster />
       <Layout>
-        <TodoList onAdd={addTodo} data={data} />
+        <TodoList onAdd={addTodo} data={data} onDelete={deleteTodo} />
       </Layout>
     </NextUIProvider>
   );

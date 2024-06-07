@@ -4,7 +4,12 @@ import Button from '@/ui/Button';
 import { CardBody, Checkbox, Link } from '@nextui-org/react';
 import { TodoType } from '@/pages/index';
 
-const Todo = ({ todo }: { todo: TodoType }) => {
+type TodoCMPType = {
+  todo: TodoType;
+  onDelete: (id: string) => void;
+};
+
+const Todo = ({ todo, onDelete }: TodoCMPType) => {
   return (
     <CardBody
       key={todo._id}
@@ -16,7 +21,7 @@ const Todo = ({ todo }: { todo: TodoType }) => {
         </Link>
       </Checkbox>
       <div className="flex gap-x-1">
-        <Button content="حذف" color="danger" size="sm">
+        <Button onClick={() => onDelete(todo._id)} content="حذف" color="danger" size="sm">
           <HiTrash className="text-lg" />
         </Button>
         <Button content="تغییر" color="success" size="sm">

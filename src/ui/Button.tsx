@@ -5,6 +5,7 @@ type PropType = {
   content: string;
   size?: 'sm' | 'md' | 'lg' | undefined;
   children: React.ReactNode;
+  onClick?: () => void;
   color?:
     | 'secondary'
     | 'default'
@@ -14,7 +15,7 @@ type PropType = {
     | 'danger'
     | undefined;
 };
-const Button = ({ content, color, size, children }: PropType) => {
+const Button = ({ content, color, size, children, onClick }: PropType) => {
   return (
     <Tooltip key="secondary" color={color} content={content}>
       <NextUI_Btn
@@ -23,6 +24,7 @@ const Button = ({ content, color, size, children }: PropType) => {
         color={color}
         variant="faded"
         aria-label="Take a photo"
+        onClick={onClick}
       >
         {children}
       </NextUI_Btn>
