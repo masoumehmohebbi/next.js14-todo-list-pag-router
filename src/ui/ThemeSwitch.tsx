@@ -7,7 +7,7 @@ export const ThemeSwitch = () => {
     <Switch
       defaultSelected
       size="md"
-      color="primary"
+      color="warning"
       thumbIcon={({ isSelected, className }) =>
         isSelected ? <HiSun className={className} /> : <HiMoon className={className} />
       }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Modal,
   ModalContent,
@@ -10,10 +10,18 @@ import {
   Checkbox,
   Input,
   Link,
+  Textarea,
 } from '@nextui-org/react';
+import { AddTodoProps } from '../pages';
 
-export default function ModalCMP() {
+export const ModalCMP: React.FC<AddTodoProps> = ({ onAdd }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  const [formData, setFormData] = useState({ title: '', description: '' });
+
+  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: [e.target.value] });
+  };
 
   return (
     <>
@@ -24,51 +32,50 @@ export default function ModalCMP() {
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Log in</ModalHeader>
-              <ModalBody>
-                <Input
-                  autoFocus
-                  //   endContent={
-                  //     <MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                  //   }
-                  label="Email"
-                  placeholder="Enter your email"
-                  variant="bordered"
-                />
-                <Input
-                  //   endContent={
-                  //     <LockIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                  //   }
-                  label="Password"
-                  placeholder="Enter your password"
-                  type="password"
-                  variant="bordered"
-                />
-                <div className="flex py-2 px-1 justify-between">
-                  <Checkbox
+              <ModalHeader className="flex flex-col gap-1">
+                اضافه کردن برنامه جدید
+              </ModalHeader>
+              <form onSubmit={(e) => onAdd(e, formData)}>
+                <ModalBody>
+                  <Input
+                    autoFocus
+                    label="عنوان"
+                    placeholder="عنوان را وارد کنید"
+                    variant="bordered"
+                    color="primary"
+                    onChange={changeHandler}
+                    value={formData.title}
+                    name="title"
+                  />
+
+                  <Textarea
+                    label="توضیح"
+                    variant="bordered"
+                    placeholder="توضیحات خود را وارد کنید"
+                    disableAnimation
+                    disableAutosize
                     classNames={{
-                      label: 'text-small',
+                      input: 'resize-y min-h-[40px]',
                     }}
-                  >
-                    Remember me
-                  </Checkbox>
-                  <Link color="primary" href="#" size="sm">
-                    Forgot password?
-                  </Link>
-                </div>
-              </ModalBody>
-              <ModalFooter>
-                <Button color="danger" variant="flat" onPress={onClose}>
-                  Close
-                </Button>
-                <Button color="primary" onPress={onClose}>
-                  Sign in
-                </Button>
-              </ModalFooter>
+                    color="primary"
+                    onChange={changeHandler}
+                    value={formData.description}
+                    name="description"
+                  />
+                </ModalBody>
+                <ModalFooter className="flex items-start justify-start">
+                  <Button type="submit" color="success" onPress={onClose}>
+                    اضافه
+                  </Button>
+                  <Button color="danger" variant="flat" onPress={onClose}>
+                    کنسل
+                  </Button>
+                </ModalFooter>
+              </form>
             </>
           )}
         </ModalContent>
       </Modal>
     </>
   );
-}
+};

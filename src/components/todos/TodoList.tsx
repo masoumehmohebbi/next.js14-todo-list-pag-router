@@ -3,12 +3,13 @@ import React from 'react';
 import { HiPencil, HiTrash } from 'react-icons/hi';
 import Button from '@/ui/Button';
 import Header from '@/components/todos/Header';
+import { AddTodoProps } from 'src/pages';
 
-const TodoList = () => {
+const TodoList: React.FC<AddTodoProps> = ({ onAdd }) => {
   return (
     <Card className="max-w-screen-md mx-auto my-5">
       <CardBody className="flex flex-row justify-between items-center">
-        <Header />
+        <Header onAdd={onAdd} />
       </CardBody>
 
       <CardBody className="flex flex-row w-full justify-between items-center">

@@ -1,12 +1,12 @@
 import Filter from '@/ui/Filter';
-import ModalCMP from '@/ui/Modal';
-import { Divider } from '@nextui-org/react';
+import { ModalCMP } from '@/ui/Modal';
 import React from 'react';
+import { AddTodoProps } from '@/pages/index';
 
-const Header = () => {
+const Header: React.FC<AddTodoProps> = ({ onAdd }) => {
   return (
     <>
-      <ModalCMP />
+      <ModalCMP onAdd={onAdd} />
       <Filter />
     </>
   );

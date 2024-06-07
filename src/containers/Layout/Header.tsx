@@ -48,11 +48,11 @@ export default function Header() {
         <NavbarItem>
           <ThemeSwitch />
         </NavbarItem>
-        <NavbarItem isActive>
+        {/* <NavbarItem isActive>
           <Link href="#" aria-current="page" color="warning">
             Customers
           </Link>
-        </NavbarItem>
+        </NavbarItem> */}
         <NavbarItem>
           <Link color="foreground" href="#">
             Integrations
