@@ -43,6 +43,16 @@ const Home: React.FC<HomeProps> = ({ todos }) => {
       .catch((err) => console.log(err));
   };
 
+  const completeHandler = (id: string) => {
+    axios
+      .put(`/api/todos/complete/${id}`)
+      .then(({ data }) => {
+        setData(data.todos);
+        toast.success(data.message);
+      })
+      .catch((err) => console.log(err));
+  };
+
   const addTodo: AddTodoProps['onAdd'] = (e, formData) => {
     e.preventDefault();
     axios
@@ -61,6 +71,7 @@ const Home: React.FC<HomeProps> = ({ todos }) => {
           onAdd={addTodo}
           data={data}
           onDelete={deleteTodo}
+          onComplete={completeHandler}
           isDeleting={isDeleting}
           loadingId={loadingId}
           editingId={editingId}

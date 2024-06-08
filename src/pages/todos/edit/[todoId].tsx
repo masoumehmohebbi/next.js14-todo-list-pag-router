@@ -3,6 +3,7 @@ import { getOneTodo } from '@/pages/api/todos/[todoId]';
 import { GetServerSidePropsContext } from 'next';
 import {
   Button,
+  Checkbox,
   Input,
   Modal,
   ModalBody,
@@ -25,6 +26,7 @@ type EditTodoProp = {
   todo: TodoType;
 };
 const EditTodo = ({ todo }: EditTodoProp) => {
+  const [checked, setChecked] = useState(todo.isCompleted);
   const { setIsEditing } = useIsEditing();
   const { isOpen, onOpenChange } = useDisclosure();
   const router = useRouter();
@@ -41,7 +43,7 @@ const EditTodo = ({ todo }: EditTodoProp) => {
     setIsEditing(false);
     axios
       .put(`/api/todos/${router.query.todoId}`, {
-        todo: { ...formData, isCompleted: true },
+        todo: { ...formData, isCompleted: checked },
       })
       .then(({ data }) => {
         router.push('/');
@@ -99,6 +101,15 @@ const EditTodo = ({ todo }: EditTodoProp) => {
                     value={formData.description}
                     name="description"
                   />
+                  <div className="mt-1 flex items-center">
+                    انجام شده؟
+                    <Checkbox
+                      onClick={() => setChecked(!checked)}
+                      className="mr-[2px]"
+                      size="lg"
+                      defaultSelected={checked}
+                    />
+                  </div>
                 </ModalBody>
                 <ModalFooter className="flex items-start justify-start">
                   <Button type="submit" color="success" onPress={onClose}>

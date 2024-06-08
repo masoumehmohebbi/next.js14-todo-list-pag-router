@@ -9,12 +9,20 @@ import { useRouter } from 'next/router';
 type TodoCMPType = {
   todo: TodoType;
   onDelete: (id: string) => void;
+  onComplete: (id: string) => void;
   isDeleting: boolean;
   isEditing: boolean;
   setEditingId: (id: string | null) => void;
 };
 
-const Todo = ({ todo, onDelete, isDeleting, isEditing, setEditingId }: TodoCMPType) => {
+const Todo = ({
+  todo,
+  onDelete,
+  isDeleting,
+  isEditing,
+  setEditingId,
+  onComplete,
+}: TodoCMPType) => {
   const router = useRouter();
 
   const handleEditClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -30,7 +38,12 @@ const Todo = ({ todo, onDelete, isDeleting, isEditing, setEditingId }: TodoCMPTy
       key={todo._id}
       className="flex flex-row w-full justify-between items-center"
     >
-      <Checkbox size="lg" defaultSelected={todo.isCompleted} lineThrough>
+      <Checkbox
+        onClick={() => onComplete(todo._id)}
+        size="lg"
+        defaultSelected={todo.isCompleted}
+        lineThrough
+      >
         <Link
           href={`/todos/${todo._id}`}
           size="lg"
