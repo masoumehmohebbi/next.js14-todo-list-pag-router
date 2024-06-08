@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { HiPencil, HiTrash } from 'react-icons/hi';
 import Button from '@/ui/Button';
 import { CardBody, Checkbox, Link } from '@nextui-org/react';
@@ -9,11 +9,22 @@ import { useRouter } from 'next/router';
 type TodoCMPType = {
   todo: TodoType;
   onDelete: (id: string) => void;
-  isLoading: boolean;
+  isDeleting: boolean;
+  isEditing: boolean;
+  setEditingId: (id: string | null) => void;
 };
 
-const Todo = ({ todo, onDelete, isLoading }: TodoCMPType) => {
+const Todo = ({ todo, onDelete, isDeleting, isEditing, setEditingId }: TodoCMPType) => {
   const router = useRouter();
+
+  const handleEditClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setEditingId(todo._id);
+    router.push(`/todos/edit/${todo._id}`).finally(() => {
+      setEditingId(null);
+    });
+  };
+
   return (
     <CardBody
       key={todo._id}
@@ -36,23 +47,19 @@ const Todo = ({ todo, onDelete, isLoading }: TodoCMPType) => {
       </Checkbox>
       <div className="flex gap-x-1">
         <Button onClick={() => onDelete(todo._id)} content="حذف" color="danger" size="sm">
-          {isLoading ? (
+          {isDeleting ? (
             <Loading size="sm" color="danger" />
           ) : (
             <HiTrash className="text-lg" />
           )}
         </Button>
 
-        <Button
-          onClick={(e) => {
-            e.preventDefault();
-            router.push(`/todos/edit/${todo._id}`);
-          }}
-          content="تغییر"
-          color="success"
-          size="sm"
-        >
-          <HiPencil className="text-lg" />
+        <Button onClick={handleEditClick} content="تغییر" color="success" size="sm">
+          {isEditing ? (
+            <Loading size="sm" color="success" />
+          ) : (
+            <HiPencil className="text-lg" />
+          )}
         </Button>
       </div>
     </CardBody>
