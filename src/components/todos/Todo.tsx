@@ -4,6 +4,7 @@ import Button from '@/ui/Button';
 import { CardBody, Checkbox, Link } from '@nextui-org/react';
 import { TodoType } from '@/pages/index';
 import Loading from '@/ui/Loading';
+import { useRouter } from 'next/router';
 
 type TodoCMPType = {
   todo: TodoType;
@@ -13,6 +14,7 @@ type TodoCMPType = {
 };
 
 const Todo = ({ todo, onDelete, isLoading, onEdit }: TodoCMPType) => {
+  const router = useRouter();
   return (
     <CardBody
       key={todo._id}
@@ -25,6 +27,10 @@ const Todo = ({ todo, onDelete, isLoading, onEdit }: TodoCMPType) => {
           isBlock
           showAnchorIcon
           color="secondary"
+          onClick={(e) => {
+            e.preventDefault();
+            router.push(`/todos/${todo._id}`);
+          }}
         >
           <p>{todo.title}</p>
         </Link>

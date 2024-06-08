@@ -2,7 +2,7 @@ import React from 'react';
 import dbConnect from '@/server/utils/dbConnect';
 import { getOneTodo } from '../api/todos/[todoId]';
 import Layout from '@/containers/Layout';
-import { Card, CardBody, Divider, Link as NextUILink } from '@nextui-org/react';
+import { Card, CardBody, Divider } from '@nextui-org/react';
 import { HiArrowRight } from 'react-icons/hi';
 import Link from 'next/link';
 
@@ -10,10 +10,10 @@ const TodoDetails = ({ todo }: any) => {
   return (
     <Layout>
       <div className="max-w-screen-md mx-auto my-5 flex flex-col md:flex-row">
-        <NextUILink color="secondary" isBlock>
+        <Link href="/" className="link-nextUI">
           <HiArrowRight />
           برگشت
-        </NextUILink>
+        </Link>
       </div>
 
       <Card className="max-w-screen-md mx-auto my-5 flex flex-col md:flex-row">

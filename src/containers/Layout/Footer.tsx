@@ -1,4 +1,4 @@
-import { Link } from '@nextui-org/react';
+import Link from 'next/link';
 import React from 'react';
 
 const Footer = () => {
@@ -6,9 +6,8 @@ const Footer = () => {
     <div className="p-5 text-tertiary bg-gray-200 flex items-center gap-2 justify-center">
       <p>ساخته شده توسط</p>
       <Link
-        isBlock
         color="primary"
-        className="font-bold"
+        className="font-bold link-nextUI"
         href="https://github.com/masoumehmohebbi"
       >
         م-م
