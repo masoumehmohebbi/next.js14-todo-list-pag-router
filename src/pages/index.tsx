@@ -26,18 +26,19 @@ export interface AddTodoProps {
 
 const Home: React.FC<HomeProps> = ({ todos }) => {
   const [data, setData] = useState<TodoType[]>(todos);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [loadingId, setLoadingId] = useState<string | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
 
   const deleteTodo = (id: string) => {
     setLoadingId(id);
-    setIsLoading(true);
+    setIsDeleting(true);
     axios
       .delete(`/api/todos/${id}`)
       .then(({ data }) => {
         setData(data.todos);
         toast.error(data.message);
-        setIsLoading(false);
+        setIsDeleting(false);
       })
       .catch((err) => console.log(err));
   };
@@ -60,8 +61,11 @@ const Home: React.FC<HomeProps> = ({ todos }) => {
           onAdd={addTodo}
           data={data}
           onDelete={deleteTodo}
-          isLoading={isLoading}
+          isDeleting={isDeleting}
           loadingId={loadingId}
+          editingId={editingId}
+          setEditingId={setEditingId}
+          isEditing
         />
       </Layout>
     </NextUIProvider>

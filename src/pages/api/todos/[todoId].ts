@@ -26,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     todo.isCompleted = body.todo.isCompleted;
     await todo.save();
     const todos = await Todo.find({});
-    return res.status(200).json({ message: 'یادداشت یا موفقیت تغییر یافت', todos });
+    return res.status(200).json({ message: 'یادداشت با موفقیت تغییر یافت', todos });
   }
 }
 
