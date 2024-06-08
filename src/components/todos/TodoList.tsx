@@ -8,8 +8,11 @@ import Todo from '@/components/todos/Todo';
 interface TodoListProps extends AddTodoProps {
   data: TodoType[];
   onDelete: (id: string) => void;
-  isLoading: boolean;
+  isDeleting: boolean;
   loadingId: string | null;
+  isEditing: boolean;
+  editingId: string | null;
+  setEditingId: (id: string | null) => void;
 }
 
 const TodoList: React.FC<TodoListProps> = ({
@@ -17,7 +20,9 @@ const TodoList: React.FC<TodoListProps> = ({
   onAdd,
   onDelete,
   loadingId,
-  isLoading,
+  isDeleting,
+  editingId,
+  setEditingId,
 }) => {
   return (
     <Card className="max-w-screen-md mx-auto my-5">
@@ -31,7 +36,9 @@ const TodoList: React.FC<TodoListProps> = ({
             key={todo._id}
             todo={todo}
             onDelete={onDelete}
-            isLoading={loadingId === todo._id}
+            isDeleting={loadingId === todo._id}
+            isEditing={editingId === todo._id}
+            setEditingId={setEditingId}
           />
         ))
       ) : (
