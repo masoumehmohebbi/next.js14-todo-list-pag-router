@@ -9,11 +9,10 @@ import { useRouter } from 'next/router';
 type TodoCMPType = {
   todo: TodoType;
   onDelete: (id: string) => void;
-  onEdit: (id: string) => void;
   isLoading: boolean;
 };
 
-const Todo = ({ todo, onDelete, isLoading, onEdit }: TodoCMPType) => {
+const Todo = ({ todo, onDelete, isLoading }: TodoCMPType) => {
   const router = useRouter();
   return (
     <CardBody
@@ -43,8 +42,12 @@ const Todo = ({ todo, onDelete, isLoading, onEdit }: TodoCMPType) => {
             <HiTrash className="text-lg" />
           )}
         </Button>
+
         <Button
-          onClick={() => onEdit(todo._id)}
+          onClick={(e) => {
+            e.preventDefault();
+            router.push(`/todos/edit/${todo._id}`);
+          }}
           content="تغییر"
           color="success"
           size="sm"

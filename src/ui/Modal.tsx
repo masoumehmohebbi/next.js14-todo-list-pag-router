@@ -11,10 +11,23 @@ import {
   Textarea,
 } from '@nextui-org/react';
 import { AddTodoProps } from '../pages';
+import { getOneTodo } from '@/pages/api/todos/[todoId]';
 
-export const ModalCMP: React.FC<AddTodoProps> = ({ onAdd }) => {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
-
+interface ModalProps extends AddTodoProps {
+  isOpen: boolean;
+  onOpenChange: () => void;
+  placement: string;
+  modalTitle: string;
+  btnContent: string;
+}
+export const ModalCMP: React.FC<ModalProps> = ({
+  onAdd,
+  isOpen,
+  onOpenChange,
+  placement,
+  modalTitle,
+  btnContent,
+}) => {
   const [formData, setFormData] = useState({ title: '', description: '' });
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,16 +36,11 @@ export const ModalCMP: React.FC<AddTodoProps> = ({ onAdd }) => {
 
   return (
     <>
-      <Button onPress={onOpen} color="primary">
-        اضافه کردن
-      </Button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">
-                اضافه کردن برنامه جدید
-              </ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">{modalTitle}</ModalHeader>
               <form onSubmit={(e) => onAdd(e, formData)}>
                 <ModalBody>
                   <Input
@@ -63,7 +71,7 @@ export const ModalCMP: React.FC<AddTodoProps> = ({ onAdd }) => {
                 </ModalBody>
                 <ModalFooter className="flex items-start justify-start">
                   <Button type="submit" color="success" onPress={onClose}>
-                    اضافه
+                    {btnContent}
                   </Button>
                   <Button color="danger" variant="flat" onPress={onClose}>
                     کنسل

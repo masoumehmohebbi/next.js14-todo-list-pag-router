@@ -1,12 +1,12 @@
 import Filter from '@/ui/Filter';
-import { ModalCMP } from '@/ui/Modal';
 import React from 'react';
 import { AddTodoProps } from '@/pages/index';
+import { AddTodoButton } from '@/ui/AddTodoButton';
 
 const Header: React.FC<AddTodoProps> = ({ onAdd }) => {
   return (
     <>
-      <ModalCMP onAdd={onAdd} />
+      <AddTodoButton onAdd={onAdd} />
       <Filter />
     </>
   );

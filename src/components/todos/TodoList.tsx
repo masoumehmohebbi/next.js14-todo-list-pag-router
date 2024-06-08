@@ -8,7 +8,6 @@ import Todo from '@/components/todos/Todo';
 interface TodoListProps extends AddTodoProps {
   data: TodoType[];
   onDelete: (id: string) => void;
-  onEdit: (id: string) => void;
   isLoading: boolean;
   loadingId: string | null;
 }
@@ -17,7 +16,6 @@ const TodoList: React.FC<TodoListProps> = ({
   data,
   onAdd,
   onDelete,
-  onEdit,
   loadingId,
   isLoading,
 }) => {
@@ -33,7 +31,6 @@ const TodoList: React.FC<TodoListProps> = ({
             key={todo._id}
             todo={todo}
             onDelete={onDelete}
-            onEdit={onEdit}
             isLoading={loadingId === todo._id}
           />
         ))

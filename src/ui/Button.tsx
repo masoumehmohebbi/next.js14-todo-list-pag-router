@@ -5,7 +5,8 @@ type PropType = {
   content: string;
   size?: 'sm' | 'md' | 'lg' | undefined;
   children: React.ReactNode;
-  onClick?: () => void;
+  // onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   color?:
     | 'secondary'
     | 'default'

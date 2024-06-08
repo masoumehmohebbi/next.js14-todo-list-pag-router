@@ -14,6 +14,7 @@ type FormData = {
 export interface TodoType {
   _id: string;
   title: string;
+  description: string;
   isCompleted: boolean;
 }
 interface HomeProps {
@@ -28,9 +29,6 @@ const Home: React.FC<HomeProps> = ({ todos }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [loadingId, setLoadingId] = useState<string | null>(null);
 
-  const editTodo = (id: string) => {
-    axios.put(`/api/todos/${id}`).then();
-  };
   const deleteTodo = (id: string) => {
     setLoadingId(id);
     setIsLoading(true);
@@ -62,7 +60,6 @@ const Home: React.FC<HomeProps> = ({ todos }) => {
           onAdd={addTodo}
           data={data}
           onDelete={deleteTodo}
-          onEdit={editTodo}
           isLoading={isLoading}
           loadingId={loadingId}
         />
