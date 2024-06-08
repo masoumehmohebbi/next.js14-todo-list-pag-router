@@ -1,13 +1,24 @@
 import Filter from '@/ui/Filter';
-import React from 'react';
-import { AddTodoProps } from '@/pages/index';
+import React, { useState } from 'react';
+import { AddTodoProps, TodoType } from '@/pages/index';
 import { AddTodoButton } from '@/ui/AddTodoButton';
+import { Divider } from '@nextui-org/react';
 
-const Header: React.FC<AddTodoProps> = ({ onAdd }) => {
+const Header: React.FC<AddTodoProps> = ({ onAdd, data }) => {
+  const sumOfcompleted = data.filter((t) => t.isCompleted);
+  const sumOfUncompleted = data.filter((t) => !t.isCompleted);
+
   return (
     <>
       <AddTodoButton onAdd={onAdd} />
-      <Filter />
+
+      <div className="flex h-5 items-center gap-x-3 text-small">
+        <div> انجام شده ها :{sumOfcompleted.length}</div>
+        <Divider orientation="vertical" />
+        <div> انجام نشده ها :{sumOfUncompleted.length}</div>
+        <Divider orientation="vertical" />
+        <div> همه :{data.length}</div>
+      </div>
     </>
   );
 };

@@ -13,16 +13,10 @@ const statusOptions = [
   },
 ];
 import { Button, ButtonGroup } from '@nextui-org/react';
-import React from 'react';
+
+import React, { useState } from 'react';
 
 const Filter = () => {
-  //   const [searchParams, setSearchParams] = useSearchParams();
-  //   const currentFilter = searchParams.get(filterField) || options.at(0).value;
-
-  //   const handleClick = (value) => {
-  //     searchParams.set(filterField, value);
-  //     setSearchParams(searchParams);
-  //   };
   return (
     <div className="flex items-center gap-x-2">
       <span>وضعیت</span>
@@ -33,7 +27,6 @@ const Filter = () => {
             <Button
               //   disabled={isActive}
               key={value}
-              //   onClick={() => handleClick(value)}
             >
               {label}
             </Button>

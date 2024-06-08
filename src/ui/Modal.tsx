@@ -41,7 +41,12 @@ export const ModalCMP: React.FC<ModalProps> = ({
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">{modalTitle}</ModalHeader>
-              <form onSubmit={(e) => onAdd(e, formData)}>
+              <form
+                onSubmit={(e) => {
+                  setFormData({ title: '', description: '' });
+                  onAdd(e, formData);
+                }}
+              >
                 <ModalBody>
                   <Input
                     autoFocus

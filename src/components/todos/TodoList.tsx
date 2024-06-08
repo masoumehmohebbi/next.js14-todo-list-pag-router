@@ -27,9 +27,9 @@ const TodoList: React.FC<TodoListProps> = ({
   setEditingId,
 }) => {
   return (
-    <Card className="max-w-screen-md mx-auto my-5">
-      <CardBody className="flex flex-row justify-between items-center">
-        <Header onAdd={onAdd} />
+    <Card className="max-w-screen-md mx-2 md:mx-auto my-5">
+      <CardBody className="flex flex-col gap-y-4 mb-3 sm:gap-y-0 sm:flex-row justify-between sm:items-center">
+        <Header onAdd={onAdd} data={data} />
       </CardBody>
 
       {data?.length ? (
