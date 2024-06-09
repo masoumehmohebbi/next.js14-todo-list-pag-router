@@ -53,11 +53,6 @@ export default function Header() {
             Customers
           </Link>
         </NavbarItem> */}
-        {/* <NavbarItem>
-          <Link color="foreground" href="#">
-            Integrations
-          </Link>
-        </NavbarItem> */}
       </NavbarContent>
 
       <NavbarContent justify="end">
