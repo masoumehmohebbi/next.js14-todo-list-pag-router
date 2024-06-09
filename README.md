@@ -1,5 +1,5 @@
 
-# Todo-List <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Alien%20Monster.png" alt="Alien Monster" width="25" height="25" />
+# Todo-List <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Alien%20Monster.png" alt="Alien Monster" width="35" height="35" />
 <h2>This is a todolist app that developped with Next.js, Typescript, NextUI and TailwindCss</h2>
  
 
