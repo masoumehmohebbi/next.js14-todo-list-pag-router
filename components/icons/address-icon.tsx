@@ -1,4 +1,8 @@
-function AddressIcon({ width, height }) {
+interface AddressIconProps {
+  width?: number | string;
+  height?: number | string;
+}
+const AddressIcon: React.FC<AddressIconProps> = ({ width = 24, height = 24 }) => {
   return (
     <svg
       width={width}
@@ -22,6 +26,6 @@ function AddressIcon({ width, height }) {
       />
     </svg>
   );
-}
+};
 
 export default AddressIcon;
