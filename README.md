@@ -28,7 +28,7 @@ https://github.com/masoumehmohebbi/next.js14-todo-list-pag-router/assets/8887610
 </ul>
 
 
-<h2>Development setup <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Bomb.png" alt="Bomb" width="30" height="30" /></h2>
+<h2>Development setup <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Bomb.png" alt="Bomb" width="35" height="35" /></h2>
 <p>1. First, you need to clone the project:</p>
 
 ```
