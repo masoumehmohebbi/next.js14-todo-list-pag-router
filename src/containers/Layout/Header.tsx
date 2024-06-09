@@ -10,7 +10,7 @@ import {
   Link,
   Button,
 } from '@nextui-org/react';
-import { HiPaperAirplane } from 'react-icons/hi';
+import { HiLogin, HiPaperAirplane } from 'react-icons/hi';
 import { ThemeSwitch } from '@/ui/ThemeSwitch';
 
 export default function Header() {
@@ -53,22 +53,18 @@ export default function Header() {
             Customers
           </Link>
         </NavbarItem> */}
-        <NavbarItem>
+        {/* <NavbarItem>
           <Link color="foreground" href="#">
             Integrations
           </Link>
-        </NavbarItem>
+        </NavbarItem> */}
       </NavbarContent>
 
       <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="#" color="foreground">
-            ورود
-          </Link>
-        </NavbarItem>
         <NavbarItem>
           <Button as={Link} color="default" href="#" variant="solid">
-            ثبت نام
+            ورود
+            <HiLogin />
           </Button>
         </NavbarItem>
       </NavbarContent>

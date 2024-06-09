@@ -48,8 +48,8 @@ const Home: React.FC<HomeProps> = ({ todos }) => {
     axios
       .put(`/api/todos/complete/${id}`)
       .then(({ data }) => {
-        setData(data.todos);
         toast.success(data.message);
+        setData(data.todos);
       })
       .catch((err) => console.log(err));
   };

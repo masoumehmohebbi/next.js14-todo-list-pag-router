@@ -22,16 +22,20 @@ export const ThemeSwitch = () => {
     <div>
       {theme === 'light' ? (
         <button
+          className="flex items-center justify-center mr-3"
           onClick={() => {
             setTheme('dark');
             localStorage.setItem('theme', 'dark');
           }}
         >
-          <HiMoon className="text-2xl cursor-pointer" />
+          <HiMoon className="text-2xl cursor-pointer text-slate-800" />
         </button>
       ) : (
-        <button onClick={() => setTheme('light')}>
-          <HiSun className="text-2xl cursor-pointer text-yellow-500" />
+        <button
+          className="flex items-center justify-center mr-3"
+          onClick={() => setTheme('light')}
+        >
+          <HiSun className="text-2xl cursor-pointer text-yellow-400" />
         </button>
       )}
     </div>
