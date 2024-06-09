@@ -1,11 +1,11 @@
 
-# Todo-List <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Alien%20Monster.png" alt="Alien Monster" width="35" height="35" />
+# Todo-List <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Alien%20Monster.png" alt="Alien Monster" width="40" height="40" />
 <h2>This is a todolist app that developped with Next.js, Typescript, NextUI and TailwindCss</h2>
  
 
 https://github.com/masoumehmohebbi/next.js14-todo-list-pag-router/assets/88876100/8dbd4557-c53b-4557-9884-a0ea1d504273
 
-<h2>🏗️ Built with</h2>
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Alien.png" alt="Alien" width="40" height="40" /><h2>🏗️ Built with</h2>
    <ul>
       <li>Language ┈➤ Typescript</li>
       <li>FrameWork ┈➤ Next.js 14</i>
