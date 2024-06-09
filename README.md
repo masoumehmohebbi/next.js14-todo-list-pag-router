@@ -6,14 +6,16 @@
 
 https://github.com/masoumehmohebbi/next.js14-todo-list-pag-router/assets/88876100/8dbd4557-c53b-4557-9884-a0ea1d504273
 
-https://fonts.gstatic.com/s/e/notoemoji/latest/1f9d0/lottie.json
-Language: Typescript
-FrameWork: Next.js 14
-Next.js-Directory: Page Router
-Styling: NextUi & TailwindCss
-Authentication: Next_Auth
-Database: Mongodb
-
+<h2>🏗️ Built with</h2>
+   <ul>
+      <li>Language ┈➤ Typescript</li>
+      <li>FrameWork ┈➤ Next.js 14</i>
+      <li>Next.js-Directory ┈➤ Page Router</li>
+      <li>Styling ┈➤ NextUi & TailwindCss</li>
+      <li>Authentication ┈➤ Next_Auth</li>
+      <li>Database ┈➤ Mongodb</i>
+      
+   </ul>
 
 <h2>⛓ Links </h2>
 <ul>
