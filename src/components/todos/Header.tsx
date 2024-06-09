@@ -4,7 +4,10 @@ import { AddTodoProps, TodoType } from '@/pages/index';
 import { AddTodoButton } from '@/ui/AddTodoButton';
 import { Divider } from '@nextui-org/react';
 
-const Header: React.FC<AddTodoProps> = ({ onAdd, data }) => {
+interface HeaderProps extends AddTodoProps {
+  data: TodoType[];
+}
+const Header: React.FC<HeaderProps> = ({ onAdd, data }) => {
   const sumOfcompleted = data.filter((t) => t.isCompleted);
   const sumOfUncompleted = data.filter((t) => !t.isCompleted);
 

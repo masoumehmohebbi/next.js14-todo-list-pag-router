@@ -4,6 +4,7 @@ import Header from '@/components/todos/Header';
 import { AddTodoProps } from 'src/pages/index';
 import { TodoType } from '@/pages/index';
 import Todo from '@/components/todos/Todo';
+import { getSession, useSession } from 'next-auth/react';
 
 interface TodoListProps extends AddTodoProps {
   data: TodoType[];
@@ -26,6 +27,15 @@ const TodoList: React.FC<TodoListProps> = ({
   editingId,
   setEditingId,
 }) => {
+  const { data: session, status } = useSession();
+  if (!session)
+    return (
+      <Card className="max-w-screen-md mx-2 md:mx-auto my-5">
+        <CardBody className="flex flex-row justify-center p-5">
+          برای ثبت یادداشت های خود لاگین کنید
+        </CardBody>
+      </Card>
+    );
   return (
     <Card className="max-w-screen-md mx-2 md:mx-auto my-5">
       <CardBody className="flex flex-col gap-y-4 mb-3 sm:gap-y-0 sm:flex-row justify-between sm:items-center">
@@ -52,3 +62,22 @@ const TodoList: React.FC<TodoListProps> = ({
 };
 
 export default TodoList;
+
+export async function getServerSideProps(ctx: any) {
+  const session = await getSession(ctx);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/api/auth/signin?callbackUrl=http://localhost:3000/',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      session,
+    },
+  };
+}

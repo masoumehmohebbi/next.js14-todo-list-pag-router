@@ -1,6 +1,10 @@
+//@ts-nocheck
 import mongoose from 'mongoose';
+interface Connection {
+  isConnected?: number;
+}
 
-const connection = {};
+const connection: Connection = {};
 
 async function dbConnect() {
   if (connection.isConnected) {

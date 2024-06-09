@@ -1,4 +1,4 @@
-function DateIcon({ width, height }) {
+function DateIcon({ width, height }: { width: number; height: number }) {
   return (
     <svg
       width={width}

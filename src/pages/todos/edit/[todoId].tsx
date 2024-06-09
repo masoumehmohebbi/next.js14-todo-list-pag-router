@@ -20,14 +20,12 @@ import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { HiArrowRight } from 'react-icons/hi';
 import { TodoType } from '../..';
-import { useIsEditing } from 'src/context/IsEdittingTodoContext';
 
 type EditTodoProp = {
   todo: TodoType;
 };
 const EditTodo = ({ todo }: EditTodoProp) => {
   const [checked, setChecked] = useState(todo.isCompleted);
-  const { setIsEditing } = useIsEditing();
   const { isOpen, onOpenChange } = useDisclosure();
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -40,7 +38,6 @@ const EditTodo = ({ todo }: EditTodoProp) => {
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsEditing(false);
     axios
       .put(`/api/todos/${router.query.todoId}`, {
         todo: { ...formData, isCompleted: checked },
@@ -50,7 +47,6 @@ const EditTodo = ({ todo }: EditTodoProp) => {
         setTimeout(() => {
           toast.success(data.message);
         }, 2000);
-        setIsEditing(true);
       })
       .catch((err) => console.log(err));
   };
