@@ -6,6 +6,7 @@
 
 https://github.com/masoumehmohebbi/next.js14-todo-list-pag-router/assets/88876100/8dbd4557-c53b-4557-9884-a0ea1d504273
 
+https://fonts.gstatic.com/s/e/notoemoji/latest/1f9d0/lottie.json
 Language: Typescript
 FrameWork: Next.js 14
 Next.js-Directory: Page Router
